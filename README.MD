@@ -1,7 +1,7 @@
 # Vue 2.0 懒加载指令 ( Vue lazyload directive )
 
 > 轻量级 Vue 2.0 懒加载自定义指令；<br>
-> 支持懒加载dom属性替换
+> 支持懒加载dom属性；<br>
 > 资源合理释放；<br>
 
 
