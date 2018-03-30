@@ -1,0 +1,28 @@
+{
+  "name": "vue-directive-lazy",
+  "version": "1.0.0",
+  "description": "LazyLoad directive of vue 2.0",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "vue",
+    "2.0",
+    "lazyload",
+    "v-lazy"
+  ],
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2"
+  }
+}
