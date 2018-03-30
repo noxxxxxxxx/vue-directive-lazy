@@ -39,7 +39,7 @@ Vue.use(lazy);
 
 <p v-lazy:class="className">延迟绑定className,className会追加在已有class内</p>
 
-<img v-lazy:img="imgSrc">延迟加载图片</p>
+<img v-lazy:src="imgSrc">延迟加载图片</p>
 
 ```
 
