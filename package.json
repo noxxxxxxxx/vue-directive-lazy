@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/noxxxxxxxx/vue-directive-lazy.git"
   },
   "keywords": [
     "vue",
@@ -13,7 +13,7 @@
     "lazyload",
     "v-lazy"
   ],
-  "author": "",
+  "author": "brooks2harry",
   "license": "MIT",
   "scripts": {
     "build": "gulp"
