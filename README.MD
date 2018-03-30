@@ -55,9 +55,6 @@ new Vue({
 });
 ```
 
-```
-<br><br>
-
 
 ## License
 
