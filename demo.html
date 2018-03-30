@@ -78,7 +78,7 @@
             current className {{className}}
         </div>
         <div class="blank"></div>
-        <img v-lazy:src="vImgSrc">
+        <img :src="originSrc" v-lazy:src="vImgSrc">
     </div>
 </div>
 
@@ -90,6 +90,7 @@
         data: function () {
             return {
                 className: 'customName',
+                originSrc: 'https://webpack.js.org/6bc5d8cf78d442a984e70195db059b69.svg',
                 hImgSrc: 'https://webpack.js.org/assets/icon-square-big.svg',
                 vImgSrc: 'https://webpack.js.org/cd0bb358c45b584743d8ce4991777c42.svg'
             }

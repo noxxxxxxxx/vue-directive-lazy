@@ -18,6 +18,12 @@
             if(type === 'class') {
                 let origin = el.getAttribute(type);
                 el.setAttribute(type, `${origin} ${value}`);
+            } else if(type === 'src') {
+                let img = new Image();
+                img.onload = function(){
+                    el.setAttribute(type, value);
+                };
+                img.src = value;
             } else {
                 el.setAttribute(type, value);
             }
