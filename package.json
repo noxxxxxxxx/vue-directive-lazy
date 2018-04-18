@@ -1,6 +1,6 @@
 {
   "name": "vue-directive-lazy",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "LazyLoad directive of vue 2.0",
   "main": "dist/index.js",
   "repository": {
