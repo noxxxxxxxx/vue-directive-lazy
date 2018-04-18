@@ -11,7 +11,8 @@
 
 ``` bash
  
-npm install vue-directive-lazyload --save; 
+npm install vue-directive-lazy --save; 
+yarn add vue-directive-lazy;
 
 ```
 
