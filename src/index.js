@@ -6,15 +6,16 @@
     let count = 0;
     let timer = 0;
     let queue = {};
+    let action = ['method'];
 
     let Helper = {
         getRandomKey() {
             return 'vue-lazy-' + (Math.random() + '').replace(/\D/g, '');
-        },
+        }
     };
 
     let Handler = {
-        setAttr(el,type,value) {
+        setAttr(el, type, value) {
             if(type === 'class') {
                 let origin = el.getAttribute(type);
                 el.setAttribute(type, `${origin} ${value}`);
@@ -27,6 +28,9 @@
             } else {
                 el.setAttribute(type, value);
             }
+        },
+        setFunc(cb) {
+            cb && cb();
         }
     };
 
@@ -80,26 +84,40 @@
             bind(el, binding) {
                 let type = binding.arg;
                 let value = binding.value;
-                if (typeof binding.value == 'function' || !binding.arg) {
+                let funFlag = action.indexOf(type) === -1;
+                if (funFlag && typeof binding.value == 'function' || !binding.arg) {
                     return console.error('[Vue warn]: Invalid parameter, Expected String or number.');
+                }
+                if(!funFlag && typeof binding.value !== 'function') {
+                    return console.error('[Vue warn]: Invalid parameter, Expected function.')
                 }
 
                 if(!el.hasOwnProperty('vue-lazy-id')){
                     el['vue-lazy-id'] = Helper.getRandomKey();
                 }
 
-                lazy.set(el, ()=> {
+                let callback = () => {
+                    if(!funFlag) {
+                        Handler.setFunc(value);
+                        return;
+                    }
                     Handler.setAttr(el, type, value);
-                });
+                };
+                lazy.set(el, callback);
             },
             update(el, binding) {
                 let type = binding.arg;
                 let value = binding.value;
                 let key = el['vue-lazy-id'];
                 if(queue.hasOwnProperty(key)) {
-                    lazy.set(el, ()=> {
+                    let callback = () => {
+                        if(action.indexOf(type) > -1) {
+                            Handler.setFunc(value);
+                            return;
+                        }
                         Handler.setAttr(el, type, value);
-                    });
+                    };
+                    lazy.set(el, callback);
                 }
             },
             unbind(el) {

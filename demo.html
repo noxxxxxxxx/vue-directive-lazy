@@ -65,6 +65,7 @@
     <p>vertical</p>
     <div class="vertical">
         <div class="blank"></div>
+        <div v-lazy:method="trigger">trigger function</div>
         <div class="blank block" v-lazy:class="className">
             current className {{className}}
         </div>
@@ -79,6 +80,7 @@
         </div>
         <div class="blank"></div>
         <img :src="originSrc" v-lazy:src="vImgSrc">
+        <div v-lazy:method="trigger">trigger function</div>
     </div>
 </div>
 
@@ -93,6 +95,11 @@
                 originSrc: 'https://webpack.js.org/6bc5d8cf78d442a984e70195db059b69.svg',
                 hImgSrc: 'https://webpack.js.org/assets/icon-square-big.svg',
                 vImgSrc: 'https://webpack.js.org/cd0bb358c45b584743d8ce4991777c42.svg'
+            }
+        },
+        methods: {
+            trigger: function() {
+                console.log('triggerd');
             }
         }
     })
