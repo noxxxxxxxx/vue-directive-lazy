@@ -2,6 +2,7 @@
 
 > 轻量级 Vue 2.0 懒加载自定义指令；<br>
 > 支持懒加载dom属性；<br>
+> 支持懒加载函数调用；<br>
 > 资源合理释放；<br>
 
 
@@ -42,6 +43,7 @@ Vue.use(lazy);
 
 <img v-lazy:src="imgSrc">延迟加载图片</p>
 
+<div v-lazy:method="trigger">触发函数调用</div>
 ```
 
 ```javascript
@@ -51,6 +53,11 @@ new Vue({
 	    return {
 	        className: 'customClass',
 	        imgSrc: 'http://img.jpg'
+	    }
+	},
+	methods: {
+	    trigger: function() {
+	        // do something
 	    }
 	}
 });
