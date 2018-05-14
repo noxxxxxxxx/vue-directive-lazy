@@ -70,7 +70,7 @@
             current className {{className}}
         </div>
         <div class="blank"></div>
-        <img v-lazy:src="hImgSrc">
+        <img v-lazy:src="hImgSrc" alt="testImgAlt">
     </div>
     <p>horizon</p>
     <div class="horizon">
@@ -79,7 +79,7 @@
             current className {{className}}
         </div>
         <div class="blank"></div>
-        <img :src="originSrc" v-lazy:src="vImgSrc">
+        <img :src="originSrc" v-lazy:src="vImgSrc" alt="imgSrc">
         <div v-lazy:method="trigger">trigger function</div>
     </div>
 </div>

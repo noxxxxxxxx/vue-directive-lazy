@@ -11,6 +11,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     var timer = 0;
     var queue = {};
     var action = ['method'];
+    var defaultSrc = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
 
     var Helper = {
         getRandomKey: function getRandomKey() {
@@ -97,6 +98,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
                 if (!el.hasOwnProperty('vue-lazy-id')) {
                     el['vue-lazy-id'] = Helper.getRandomKey();
+                }
+
+                if (funFlag && type === 'src' && el.tagName.toLowerCase() === 'img') {
+                    Handler.setAttr(el, type, defaultSrc);
                 }
 
                 var callback = function callback() {

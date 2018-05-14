@@ -7,6 +7,7 @@
     let timer = 0;
     let queue = {};
     let action = ['method'];
+    let defaultSrc = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
 
     let Helper = {
         getRandomKey() {
@@ -94,6 +95,10 @@
 
                 if(!el.hasOwnProperty('vue-lazy-id')){
                     el['vue-lazy-id'] = Helper.getRandomKey();
+                }
+
+                if(funFlag && type === 'src' && el.tagName.toLowerCase() === 'img') {
+                    Handler.setAttr(el, type, defaultSrc);
                 }
 
                 let callback = () => {
