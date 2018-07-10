@@ -7,7 +7,10 @@
     let timer = 0;
     let queue = {};
     let action = ['method'];
-    let defaultSrc = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
+    let _options = {
+        error: '',
+        loading: 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA='
+    };
 
     let Helper = {
         getRandomKey() {
@@ -26,6 +29,9 @@
                     el.setAttribute(type, value);
                 };
                 img.src = value;
+                img.onerror = function() {
+                    _options.error && el.setAttribute(type, _options.error);
+                }
             } else {
                 el.setAttribute(type, value);
             }
@@ -80,7 +86,8 @@
     };
 
 
-    vueLazy.install = function (Vue, options) {
+    vueLazy.install = function (Vue, options = {}) {
+        _options = Object.assign(_options,options);
         Vue.directive('lazy', {
             bind(el, binding) {
                 let type = binding.arg;
@@ -98,7 +105,7 @@
                 }
 
                 if(funFlag && type === 'src' && el.tagName.toLowerCase() === 'img') {
-                    Handler.setAttr(el, type, defaultSrc);
+                    Handler.setAttr(el, type, _options.loading);
                 }
 
                 let callback = () => {
@@ -127,7 +134,7 @@
             },
             unbind(el) {
                 let key = el['vue-lazy-id'];
-                delete  queue[key];
+                delete queue[key];
             }
         });
     };
