@@ -11,7 +11,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     var timer = 0;
     var queue = {};
     var action = ['method'];
-    var defaultSrc = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
+    var _options = {
+        error: '',
+        loading: 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA='
+    };
 
     var Helper = {
         getRandomKey: function getRandomKey() {
@@ -30,6 +33,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     el.setAttribute(type, value);
                 };
                 img.src = value;
+                img.onerror = function () {
+                    _options.error && el.setAttribute(type, _options.error);
+                };
             } else {
                 el.setAttribute(type, value);
             }
@@ -83,7 +89,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return id;
     };
 
-    vueLazy.install = function (Vue, options) {
+    vueLazy.install = function (Vue) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        _options = Object.assign(_options, options);
         Vue.directive('lazy', {
             bind: function bind(el, binding) {
                 var type = binding.arg;
@@ -101,7 +110,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 }
 
                 if (funFlag && type === 'src' && el.tagName.toLowerCase() === 'img') {
-                    Handler.setAttr(el, type, defaultSrc);
+                    Handler.setAttr(el, type, _options.loading);
                 }
 
                 var callback = function callback() {

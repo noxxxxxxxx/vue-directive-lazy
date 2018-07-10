@@ -20,9 +20,21 @@ yarn add vue-directive-lazy;
 ```javascript
 
 import lazy from 'vue-directive-lazy';
-Vue.use(lazy);
+Vue.use(lazy,{
+    error: '',
+    loading: ''
+});
 
 ```
+
+## Constructor Options
+
+|key|description|default|options|
+|:---|---|---|---|
+|`error`|src of the image upon load fail||`String`
+|`loading`|src of the image while loading|`data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=`|`String`|
+> error 参数为空情况下，图片加载失败将默认展示 loading 参数的图片
+
 
 > * 直接引入:
 ```html
