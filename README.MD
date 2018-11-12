@@ -8,13 +8,17 @@
 
 ## 安装：
 
-> * ES6
+> * NPM
 
 ``` bash
  
 npm install vue-directive-lazy --save; 
-yarn add vue-directive-lazy;
 
+```
+
+> * Yarn
+```bash
+yarn add vue-directive-lazy;
 ```
 
 ```javascript
