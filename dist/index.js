@@ -92,7 +92,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     vueLazy.install = function (Vue) {
         var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-        _options = Object.assign(_options, options);
+        for (var i in options) {
+            if (options.hasOwnProperty(i)) {
+                _options[i] = options[i];
+            }
+        }
         Vue.directive('lazy', {
             bind: function bind(el, binding) {
                 var type = binding.arg;

@@ -87,7 +87,11 @@
 
 
     vueLazy.install = function (Vue, options = {}) {
-        _options = Object.assign(_options,options);
+        for (let i in options) {
+            if (options.hasOwnProperty(i)) {
+                _options[i] = options[i];
+            }
+        }
         Vue.directive('lazy', {
             bind(el, binding) {
                 let type = binding.arg;
